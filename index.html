@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday, Aradhya 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background stars + confetti + cursor trail are drawn here -->
+  <canvas id="fx"></canvas>
+  <div id="bar"></div>
+
+  <!-- Custom cursor (desktop only; JS enables it) -->
+  <div class="cursor-ring"></div><div class="cursor-dot"></div>
+
+  <!-- Music controls (revealed after "Open Your Surprise") -->
+  <div class="dock" id="dock">
+    <button id="playBtn" aria-label="Play or pause music">⏸</button>
+    <button id="muteBtn" aria-label="Mute or unmute music">🔊</button>
+  </div>
+  <audio id="bgm" src="birthday.mp4" loop preload="none"></audio>
+
+  <!-- Side progress dots -->
+  <nav class="dots" id="dots" aria-label="Progress">
+    <button class="dot on" aria-label="Page 1"></button>
+    <button class="dot" aria-label="Page 2"></button>
+    <button class="dot" aria-label="Page 3"></button>
+    <button class="dot" aria-label="Page 4"></button>
+  </nav>
+
+  <main id="stage">
+    <!-- PAGE 1 — THE SURPRISE -->
+    <section class="scene active">
+      <div class="wrap center">
+        <h1 class="script reveal" style="--d:.2s">Hey, Beautiful...</h1>
+        <p class="sub reveal" style="--d:1s">I made something special for you.</p>
+        <button class="btn big magnetic reveal" style="--d:1.7s" id="openBtn">Open Your Surprise 🎁</button>
+      </div>
+      <p class="foot reveal" style="--d:2.4s">Made with lots of love <span class="secret-heart" id="secret">❤️</span></p>
+    </section>
+
+    <!-- PAGE 2 — THE BIRTHDAY MESSAGE -->
+    <section class="scene">
+      <div class="wrap center">
+        <h2 class="title reveal" style="--d:.2s">Happy Birthday, My Beautiful Aradhya! 🎂✨</h2>
+        <div class="card glass reveal" style="--d:.9s">
+          <p class="lead" id="typed" data-type="Another year older, another year more beautiful, more amazing😁❤️"></p>
+          <p class="body">
+            Happy Birthday to you Aradhya 🤩, May god bless you with more and more success. I hope this birthday will give you fun , joy and happiness. Birthday ma jhagra maat karna mummy ko pareshan bhi maat karna jyada, thats it enjoy your day .. now you can go further.
+          </p>
+        </div>
+        <div class="row reveal" style="--d:1.6s">
+          <button class="btn ghost magnetic" data-go="-1">← Back</button>
+          <button class="btn magnetic" data-go="1">There's More... 💫</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3 — PHOTOS. Replace the files in /images to change the pictures. -->
+    <section class="scene">
+      <div class="wrap center">
+        <h2 class="title small reveal" style="--d:.2s">A Beautiful Pics With My Beautiful Sister ❤️</h2>
+        <div class="gallery reveal" style="--d:.7s">
+          <figure class="polaroid" data-cap="One of my favourite memories ❤️">
+            <div class="ph" data-file="sister1.jpeg"><img src="sister1.jpeg" alt="Me and my sister"></div>
+            <figcaption>One of my favourite memories ❤️</figcaption>
+          </figure>
+          <figure class="polaroid" data-cap="Always smiling, always beautiful ✨">
+            <div class="ph" data-file="sister2.jpeg"><img src="sister2.jpeg" alt="My sister smiling"></div>
+            <figcaption>Always smiling, always beautiful ✨</figcaption>
+          </figure>
+          <figure class="polaroid" data-cap="Some moments are simply unforgettable.">
+            <div class="ph" data-file="sister3.jpg"><img src="sister3.jpeg" alt="A cute person"></div>
+            <figcaption>Some moments are simply unforgettable.</figcaption>
+          </figure>
+        </div>
+        <p class="hint reveal" style="--d:1.2s">Tap a photo to open it</p>
+        <div class="row reveal" style="--d:1.3s">
+          <button class="btn ghost magnetic" data-go="-1">← Back</button>
+          <button class="btn magnetic" data-go="1">One last thing 💌</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 — FINAL SURPRISE -->
+    <section class="scene">
+      <div class="wrap center">
+        <p class="sub reveal" style="--d:.2s">And finally...</p>
+        <h2 class="script big reveal" style="--d:1.2s">Happy Birthday Once Again <span class="final-heart" id="finalHeart"></span></h2>
+        <p class="body wide reveal" style="--d:2.2s">
+          No matter if I am in your birthday or not but I will be there whenever you need.
+          I hope this year brings you endless happiness, beautiful memories, success and everything you've been wishing for.
+        </p>
+        <div class="card glass final reveal" style="--d:3.2s"><p>Stay beautiful. Stay happy. Keep smiling. ❤️</p></div>
+        <p class="sign script reveal" style="--d:4s">With love,<br>Your Brother Vivek❤️</p>
+        <button class="btn ghost magnetic reveal" style="--d:4.4s" data-go="-3">↺ Watch again</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Photo lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="close" id="closeLb" aria-label="Close photo">✕</button>
+    <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
